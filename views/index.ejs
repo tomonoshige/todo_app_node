@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TODOアプリケーション</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="subtitle">MyTODOリスト</h1>
+      </div>
+    </header>
+    <div class="top-wrapper">
+      <div class="container">
+        <a href="/" class="topre">トップ画面に戻る⬅︎</a>
+        <div>
+          <% todo_list.forEach((list, index) => { %>
+          <p class="todo-list">id.<%= list.id %> <%= index+1 %>つ目：<%= list.work %>
+          <form action="/edit/<%= list.id %>" method="get" class="edit">
+            <input type="submit" value="編集" class="edit-b">
+          </form>
+          <form action="/delete/<%= list.id %>" method="post" class="done">
+            <input type="submit" value="完了" class="done-b">
+          </form>
+          </p>
+          <% }); %>
+        </div>
+        <a href="/new" class="add">MyTODOを追加する</a>
+
+        <% /* 配列の数の表示 */ %>
+        <p class="todoSum">全て完了まで あと<%= todo_list.length %>個</p>
+      </div> 
+    </div>
+  </body>
+</html>

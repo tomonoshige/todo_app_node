@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN";
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  height: 100px;
+  padding: 20px 0;
+  background-color: gray;
+  position: fixe;
+}
+  
+.container {
+  width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+  
+.top-wrapper {
+  height: 1200px;
+  background-image: url(/images/topcopy.png);
+  background-size: cover;
+  text-align: cente;
+}
+
+h1 {
+  color: linen;
+}
+
+.subtitle {
+  display: inline-block;
+}
+
+.top {
+  display: block;
+  position: absolute;
+  top: 500px;
+  left: 650px;
+  font-size: 30px;
+  color: white;
+  background-color: lightseagreen;
+  border-radius: 4px;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.top:hover {
+  background-color: seagreen;
+  z-index: 0;
+}
+
+.topre {
+  display: inline-block;
+  margin-bottom: 50px;
+  cursor: pointer;
+  color: lightslategray;
+}
+
+.todo-list {
+  display: inline-block;
+  font-size: 20px;
+  background-color: linen;
+  border-radius: 4px;
+  padding: 5px 7px;
+  color: dimgray;
+}
+
+.edit {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.edit-b {
+  background-color: lightpink;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  padding: 5px 7px;
+}
+
+.edit-b:hover {
+  background-color: salmon;
+  z-index: 0;
+}
+
+.done {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.done-b {
+  background-color: lightcoral;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  padding: 5px 7px;
+}
+
+.done-b:hover {
+  background-color: tomato;
+  z-index: 0;
+}
+
+.add {
+  position: absolute;
+  top: 230px;
+  left: 1150px;
+  font-size: 25px;
+  color: white;
+  background-color: lightskyblue;
+  border-radius: 4px;
+  padding: 20px 30px;
+}
+
+.add:hover {
+  background-color: deepskyblue;
+  z-index: 0;
+}
+
+.todoSum {
+  font-size: 70px;
+  color: lightsalmon;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.new {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.new input {
+  padding: 20px 10px;
+  font-size: 25px;
+  width: 300px;
+  border-radius: 4px;
+}
+
+.rein {
+  color: lightslategray;
+}
+
+.add-b {
+  color: white;
+  background-color: lightskyblue;
+  border-radius: 4px;
+  border: none;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.add-b:hover {
+  background-color: deepskyblue;
+  z-index: 0;
+}
+
+.edit-bb {
+  color: white;
+  background-color: lightpink;
+  border-radius: 4px;
+  border: none;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.edit-bb:hover {
+  background-color: salmon;
+  z-index: 0;
+}
