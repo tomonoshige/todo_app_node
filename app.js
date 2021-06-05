@@ -83,7 +83,31 @@ app.post('/update/:id', (req, res) => {
     );
   });
 
+//ログイン機能
+app.get('/login', (req, res) => {
+  res.render('login.ejs');
+});
 
+app.post('/login', (req, res) => {
+  const email = req.body.email;
+  connection.query(
+    'SELECT * FROM users WHERE email = ?',
+    [email],
+    (error, results) => {
+      if(results.length > 0) {
+        if(req.body.password === results[0].password) {
+          console.log('認証に成功');
+          res.redirect('/index');
+        } else {
+          console.log('認証に失敗');
+          res.redirect('/index');
+        }
+      } else {
+        res.redirect('/login')
+      }
+    }
+  );
+});
 
 // サーバを起動
 app.listen(3000);
