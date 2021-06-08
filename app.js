@@ -1,6 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
-const session = require('express-session')
+const session = require('express-session');
 
 const app = express();
 app.use(express.static('public'));
@@ -20,9 +20,20 @@ connection.connect((err) => {
       }
       console.log('success');
 });
+
+app.use(
+  session({
+    secret: 'my_secret_key',
+    resave: false,
+    saveUninitialized: false,
+  })
+)
+
 // ここまで設定
 
 // ここからコード
+
+
 
 app.get('/', (req, res) => {
   res.render('top.ejs');
