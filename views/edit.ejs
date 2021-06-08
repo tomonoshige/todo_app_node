@@ -6,11 +6,8 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <header>
-      <div class="container">
-        <h1 class="title">MyTODOの編集</h1>
-      </div>
-    </header>
+    <%- include('header') %>
+    
     <div class="top-wrapper">
       <div class="container">
         <form action="/update/<%= todo_list.id %>" method="post" class="new">

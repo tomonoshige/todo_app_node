@@ -13,13 +13,17 @@ header {
   background-color: gray;
   position: fixe;
 }
-  
+
+header p {
+  display: inline-block;
+}
+
 .container {
   width: 1170px;
   padding: 0 15px;
   margin: 0 auto;
 }
-  
+
 .top-wrapper {
   height: 1200px;
   background-image: url(/images/topcopy.png);

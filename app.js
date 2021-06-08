@@ -33,7 +33,16 @@ app.use(
 
 // ここからコード
 
-
+app.use((req, res, next) => {
+  if(req.session.userId === undefined) {
+    res.locals.username = 'ゲスト';
+    console.log('ログインしてません');
+  } else {
+    console.log('ログイン中');
+    res.locals.username = req.session.username;
+  }
+  next();
+});
 
 app.get('/', (req, res) => {
   res.render('top.ejs');
@@ -108,6 +117,8 @@ app.post('/login', (req, res) => {
     (error, results) => {
       if(results.length > 0) {
         if(req.body.password === results[0].password) {
+          req.session.userId = results[0].id;
+          req.session.username = results[0].username;
           console.log('認証に成功');
           res.redirect('/index');
         } else {
