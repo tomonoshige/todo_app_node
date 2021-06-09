@@ -132,5 +132,12 @@ app.post('/login', (req, res) => {
   );
 });
 
+//ログアウト機能
+app.get('/logout', (req, res) => {
+  req.session.destroy((error) => {
+    res.redirect('/index');
+  });
+});
+
 // サーバを起動
 app.listen(3000);
