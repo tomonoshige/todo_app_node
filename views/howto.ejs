@@ -13,8 +13,15 @@
         <a href="/index" class="rein">一覧に戻る⬅︎</a>
         <div>
           <% howto_todo.forEach((howto, index) => { %>
-          <p class="todo-list"><%= howto.title %></p>
-          <p><%= howto.article %></p>
+            <% if(howto.category === 'all') { %>
+            <p class="todo-list"><%= howto.title %></p>
+            <p><%= howto.article %></p>
+            <% } %>
+            <% if(howto.category === 'limited') { %>
+            <p class="todo-list"><%= howto.title %></p>
+            <i>会員限定</i>
+            <p><%= howto.article %></p>
+            <% } %>
           <% }); %>
         </div>
       </div>
