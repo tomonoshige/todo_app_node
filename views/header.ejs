@@ -1,9 +1,11 @@
-
 <header>
   <div class="container">
     <h1 class="subtitle">MyTODOリスト</h1>
     <p>ようこそ、<%= locals.username %>さん</p>
-    <a href="/login" class="">ログイン</a>
+    <% if(locals.isLoggedIn) { %>
     <a href="/logout" class="">ログアウト</a>
+    <% } else { %>
+    <a href="/login" class="">ログイン</a>
+    <% } %>
   </div>
 </header>
