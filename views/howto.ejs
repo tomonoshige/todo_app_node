@@ -11,7 +11,12 @@
     <div class="top-wrapper">
       <div class="container">
         <a href="/index" class="rein">一覧に戻る⬅︎</a>
-
+        <div>
+          <% howto_todo.forEach((howto, index) => { %>
+          <p class="todo-list"><%= howto.title %></p>
+          <p><%= howto.article %></p>
+          <% }); %>
+        </div>
       </div>
     </div>
   </body>

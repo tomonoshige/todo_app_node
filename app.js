@@ -106,8 +106,14 @@ app.post('/update/:id', (req, res) => {
     );
   });
 
+//How To MYTODOボタンでHow To表示
 app.get('/howto', (req, res) => {
-  res.render('howto.ejs');
+  connection.query(
+    'SELECT * FROM howto_todo',
+    (error, results) => {
+      res.render('howto.ejs', {howto_todo: results});
+      }
+  );
 });
 
 //ログイン機能
