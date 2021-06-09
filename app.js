@@ -106,6 +106,10 @@ app.post('/update/:id', (req, res) => {
     );
   });
 
+app.get('/howto', (req, res) => {
+  res.render('howto.ejs');
+});
+
 //ログイン機能
 app.get('/login', (req, res) => {
   res.render('login.ejs');

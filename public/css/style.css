@@ -127,6 +127,22 @@ h1 {
   z-index: 0;
 }
 
+.howto {
+  position: absolute;
+  top: 350px;
+  left: 1150px;
+  font-size: 25px;
+  color: white;
+  background-color: lightslategray;
+  border-radius: 4px;
+  padding: 20px 42px;
+}
+
+.howto:hover {
+  background-color: dimgray;
+  z-index: 0;
+}
+
 .todoSum {
   font-size: 70px;
   color: lightsalmon;
