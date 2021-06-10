@@ -14,13 +14,18 @@
         <div>
           <% howto_todo.forEach((howto, index) => { %>
             <% if(howto.category === 'all') { %>
-            <p class="todo-list"><%= howto.title %></p>
-            <p><%= howto.article %></p>
+              <p class="todo-list"><%= howto.title %></p>
+              <p><%= howto.article %></p>
             <% } %>
             <% if(howto.category === 'limited') { %>
-            <p class="todo-list"><%= howto.title %></p>
-            <i>会員限定</i>
-            <p><%= howto.article %></p>
+              <p class="todo-list"><%= howto.title %></p>
+              <i>会員限定</i>
+              <% if(locals.isLoggedIn) { %>
+              <p><%= howto.article %></p>
+              <% } else { %>
+              <p>今すぐログインしよう！</p>
+              <a href="/login">ログイン</a>
+              <% } %>
             <% } %>
           <% }); %>
         </div>
