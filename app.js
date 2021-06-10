@@ -151,5 +151,10 @@ app.get('/logout', (req, res) => {
   });
 });
 
+//ユーザー登録機能
+app.get('/signup', (req,res) => {
+  res.render('signup.ejs');
+});
+
 // サーバを起動
 app.listen(3000);
