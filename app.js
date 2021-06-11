@@ -153,7 +153,7 @@ app.get('/logout', (req, res) => {
 
 //ユーザー登録機能
 app.get('/signup', (req,res) => {
-  res.render('signup.ejs');
+  res.render('signup.ejs', {errors: []});
 });
 
 app.post('/signup', (req, res, next) => {
@@ -171,7 +171,8 @@ app.post('/signup', (req, res, next) => {
       errors.push('パスワードが空です')
     }
     if(errors.length >0) {
-      res.redirect('/signup');
+      res.render('signup.ejs', {errors: errors});
+
     } else {
       next();
     }
