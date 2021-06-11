@@ -156,35 +156,57 @@ app.get('/signup', (req,res) => {
   res.render('signup.ejs', {errors: []});
 });
 
-app.post('/signup', (req, res, next) => {
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-  const errors = [];
-    if(username === '') {
-      errors.push('ユーザー名が空です')
-    }
-    if(email === '') {
-      errors.push('メールアドレスが空です')
-    }
-    if(password === '') {
-      errors.push('パスワードが空です')
-    }
-    if(errors.length >0) {
-      res.render('signup.ejs', {errors: errors});
-
-    } else {
-      next();
-    }
+app.post('/signup',
+  //ユーザー登録必要事項入力時の空チェック機能
+  (req, res, next) => {
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    const errors = [];
+      if(username === '') {
+        errors.push('ユーザー名が空です')
+      }
+      if(email === '') {
+        errors.push('メールアドレスが空です')
+      }
+      if(password === '') {
+        errors.push('パスワードが空です')
+      }
+      if(errors.length >0) {
+        res.render('signup.ejs', {errors: errors});
+      } else {
+        next();
+      }
   },
+  //メールアドレス重複チェック機能
+  (req, res, next) => {
+    const email = req.body.email;
+    const errors = [];
+    connection.query(
+      'SELECT * FROM users WHERE email = ?',
+      [email],
+      (error, results) =>{
+        if(results.length > 0) {
+          errors.push('メールアドレスが重複してます');
+          res.render('signup.ejs', {errors: errors});
+        } else {
+          next();
+        }
+      }
+    );
+  },
+  //ユーザー登録機能
   (req, res) => {
-  connection.query(
-    'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
-    [username, email, password],
-    (error, results) => {
-      req.session.userId = results.insertId;
-      req.session.username = username;
-      res.redirect('/index');
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    connection.query(
+      'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+      [username, email, password],
+      (error, results) => {
+        req.session.userId = results.insertId;
+        req.session.username = username;
+        res.redirect('/index');
     }
   );
 });
