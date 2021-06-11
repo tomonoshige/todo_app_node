@@ -156,10 +156,27 @@ app.get('/signup', (req,res) => {
   res.render('signup.ejs');
 });
 
-app.post('/signup', (req, res) => {
+app.post('/signup', (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
+  const errors = [];
+    if(username === '') {
+      errors.push('ユーザー名が空です')
+    }
+    if(email === '') {
+      errors.push('メールアドレスが空です')
+    }
+    if(password === '') {
+      errors.push('パスワードが空です')
+    }
+    if(errors.length >0) {
+      res.redirect('/signup');
+    } else {
+      next();
+    }
+  },
+  (req, res) => {
   connection.query(
     'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
     [username, email, password],
