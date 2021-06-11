@@ -13,11 +13,22 @@
     </header>
     <div class="top-wrapper">
       <div class="container">
-        <form action="/login" method="post" class="new">
-          <input type="text" name="email" placeholder="email">
-          <input type="password" name="password" placeholder="password">
-          <input type="submit" value="ログイン">
-        </form>
+        <div class="">
+          <% if(errors.length >0) { %>
+            <ul>
+              <% errors.forEach(error => { %>
+              <li><%= error %></li>
+              <% }); %>
+            </ul>
+          <% } %>
+        </div>
+        <div class="">
+          <form action="/login" method="post" class="new">
+            <input type="text" name="email" placeholder="email">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="ログイン">
+          </form>
+        </div>
         <a href="/index" class="rein">一覧に戻る⬅︎</a>
       </div>
     </div>

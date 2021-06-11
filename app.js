@@ -118,11 +118,12 @@ app.get('/howto', (req, res) => {
 
 //ログイン機能
 app.get('/login', (req, res) => {
-  res.render('login.ejs');
+  res.render('login.ejs', {errors: []});
 });
 
 app.post('/login', (req, res) => {
   const email = req.body.email;
+  const errors = [];
   connection.query(
     'SELECT * FROM users WHERE email = ?',
     [email],
@@ -134,11 +135,12 @@ app.post('/login', (req, res) => {
           console.log('認証に成功');
           res.redirect('/index');
         } else {
-          console.log('認証に失敗');
-          res.redirect('/index');
+          errors.push('パスワードが違います');
+          res.render('login.ejs', {errors: errors});
         }
       } else {
-        res.redirect('/login')
+        errors.push('登録されていないメールアドレです');
+        res.render('login.ejs', {errors: errors});
       }
     }
   );
@@ -164,13 +166,13 @@ app.post('/signup',
     const password = req.body.password;
     const errors = [];
       if(username === '') {
-        errors.push('ユーザー名が空です')
+        errors.push('ユーザー名が空です');
       }
       if(email === '') {
-        errors.push('メールアドレスが空です')
+        errors.push('メールアドレスが空です');
       }
       if(password === '') {
-        errors.push('パスワードが空です')
+        errors.push('パスワードが空です');
       }
       if(errors.length >0) {
         res.render('signup.ejs', {errors: errors});
