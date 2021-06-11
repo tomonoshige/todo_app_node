@@ -118,7 +118,12 @@ app.get('/howto', (req, res) => {
 
 //ログイン機能
 app.get('/login', (req, res) => {
-  res.render('login.ejs', {errors: []});
+  connection.query(
+    'SELECT * FROM users',
+    (error, results) => {
+      res.render('login.ejs', {errors: [], users: results});
+      }
+  );
 });
 
 app.post('/login', (req, res) => {

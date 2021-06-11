@@ -30,6 +30,15 @@
           </form>
         </div>
         <a href="/index" class="rein">一覧に戻る⬅︎</a>
+        <div>
+          <h3>以下本当は表示しない</h3>
+          <% users.forEach((user, index) => { %>
+          <p class="">id.<%= user.id %> <%= index+1 %>人目：<%= user.username %>
+          </p>
+          <p class="">メールアドレス：<%= user.email %></p>
+          <p class="">パスワード：<%= user.password %></p>
+          <% }); %>
+        </div>
       </div>
     </div>
   </body>
