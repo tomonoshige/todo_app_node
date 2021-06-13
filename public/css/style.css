@@ -16,6 +16,8 @@ header {
 
 header p {
   display: inline-block;
+  color: linen;
+  margin-left: 30px;
 }
 
 .container {
@@ -29,6 +31,29 @@ header p {
   background-image: url(/images/topcopy.png);
   background-size: cover;
   text-align: cente;
+}
+
+.signup-b {
+  float: right;
+  background-color: ;
+  cursor: pointer;
+  color: linen;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 15px;
+  margin-top: 30px;
+  margin-left: 15px;
+}
+
+.loginout-b {
+  float: right;
+  background-color: ;
+  cursor: pointer;
+  color: linen;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 15px;
+  margin-top: 30px;
 }
 
 h1 {
