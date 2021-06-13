@@ -13,7 +13,7 @@
         <a href="/" class="topre">トップ画面に戻る⬅︎</a>
         <div>
           <% todo_list.forEach((list, index) => { %>
-          <p class="todo-list">id.<%= list.id %> <%= index+1 %>つ目：<%= list.work %>
+          <p class="todo-list"><%= index+1 %>：<%= list.work %>
           <form action="/edit/<%= list.id %>" method="get" class="edit">
             <input type="submit" value="編集" class="edit-b">
           </form>

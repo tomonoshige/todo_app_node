@@ -92,7 +92,7 @@ h1 {
 .todo-list {
   display: inline-block;
   font-size: 20px;
-  background-color: linen;
+  background-color: ;
   border-radius: 4px;
   padding: 5px 7px;
   color: dimgray;
@@ -143,7 +143,7 @@ h1 {
   font-size: 25px;
   color: white;
   background-color: lightskyblue;
-  border-radius: 4px;
+  border-radius: 100px;
   padding: 20px 30px;
 }
 
@@ -159,7 +159,7 @@ h1 {
   font-size: 25px;
   color: white;
   background-color: lightslategray;
-  border-radius: 4px;
+  border-radius: 100px;
   padding: 20px 42px;
 }
 
