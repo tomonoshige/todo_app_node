@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 
 const app = express();
 app.use(express.static('public'));
