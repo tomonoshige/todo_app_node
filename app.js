@@ -135,18 +135,32 @@ app.post('/login', (req, res) => {
     [email],
     (error, results) => {
       if(results.length > 0) {
-        if(req.body.password === results[0].password) {
-          req.session.userId = results[0].id;
-          req.session.username = results[0].username;
-          console.log('認証に成功');
-          res.redirect('/index');
-        } else {
-          errors.push('パスワードが違います');
-          res.render('login.ejs', {errors: errors});
-        }
+        const plain = req.body.password;
+        const hash = results[0].password;
+        bcrypt.compare(plain, hash, (error, isEqual) => {
+          if(isEqual) {
+            req.session.userId = results[0].id;
+            req.session.username = results[0].username;
+            console.log('認証に成功');
+            res.redirect('/index');
+          } else {
+            errors.push('パスワードが違います');
+            connection.query(
+              'SELECT * FROM users',
+              (error, results) => {
+                res.render('login.ejs', {errors: errors, users: results});
+                }
+            );
+          }
+        });
       } else {
-        errors.push('登録されていないメールアドレです');
-        res.render('login.ejs', {errors: errors});
+        errors.push('登録されていないメールアドレスです');
+        connection.query(
+          'SELECT * FROM users',
+          (error, results) => {
+            res.render('login.ejs', {errors: errors, users: results});
+            }
+        );
       }
     }
   );
